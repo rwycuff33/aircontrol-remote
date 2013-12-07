@@ -1,0 +1,74 @@
+<head>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+  <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+  <title>Apple control TV Remote</title>
+  <script>
+    $(document).ready(function() {
+      var address = 'http://192.168.1.46'
+      var action = function () {
+        $('.button').mousedown(function(event) {
+          var number = $(this).data('number');
+          switch (event.which) {
+            case 1:
+              break;
+            case 3:
+              if ($(this).data('right')) {
+                number = $(this).data('right');
+              } else {
+                number = $(this).data('number');
+              }
+              break;
+            default:
+          }
+          $.get(address + "/remoteAction=" + number);
+          var text = $(this).attr('title');
+          $('#feedback').html('<div data-alert class="alert-box success radius">' + text + '</div>');
+        });
+      }
+      action();
+    });
+  </script>
+  <style>
+    .button {
+      cursor: pointer;
+      text-shadow: 0px -2px 1px rgba(0,0,0,.2), 0px 1px 1px rgba(255,255,255,.4);
+      transition: all linear 300ms;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row">
+    <span id="menu" class="button small-2" title="Menu" data-number="1" data-right="2"><i class="fa fa-bars fa-5x"></i></span>
+    <span id="up" class="button small-2" title="up"  data-number="3"><i class="fa fa-chevron-up fa-5x"></i></span>
+    <span id="menuHold" class="button small-2" title="Menu Hold"  data-number="2"><i class="fa fa-eject fa-5x"></i></span>
+  </div>
+  <div class="row">
+    <span id="left" class="button small-2" title="left"  data-number="6"><i class="fa fa-chevron-left fa-5x"></i></span>
+    <span id="select" class="button small-2" title="Select"  data-number="5"><i class="fa fa-dot-circle-o fa-5x"></i></span>
+    <span id="right" class="button small-2" title="right"  data-number="7"><i class="fa fa-chevron-right fa-5x"></i></span>
+  </div>
+  <div class="row">
+    <span id="pause" class="button small-2"  title="pause" data-number="15"><i class="fa fa-pause fa-5x"></i></span>
+    <span id="down" class="button small-2" title="down"  data-number="4"><i class="fa fa-chevron-down fa-5x"></i></span>
+    <span id="play" class="button small-2"  title="play" data-number="15"><i class="fa fa-pause fa-5x"></i><i class="fa fa-play fa-5x"></i></span>
+  </div>
+  <div class="row">
+    <!--     <div id="pausePlay" class="button"  title="pause/play" data-number="10">pause/play</div> -->
+    <span id="rw" class="button small-2"  title="rewind" data-number="19"><i class="fa fa-backward fa-5x"></i></span>
+    <span id="stop" class="button small-2"  title="stop" data-number="17"><i class="fa fa-stop fa-5x"></i></span>
+    <span id="ff" class="button small-2"  title="fast forward" data-number="18"><i class="fa fa-forward fa-5x"></i></span>
+  </div>
+  <div class="row">
+    <span id="back" class="button small-2"  title="skip backward" data-number="21"><i class="fa fa-step-backward fa-5x"></i></span>
+    <span id="selectHold" class="button small-2"  title="select hold" data-number="22"><i class="fa fa-circle fa-5x"></i></span>
+    <span id="skip" class="button small-2"  title="skip forward" data-number="20"><i class="fa fa-step-forward fa-5x"></i></span>
+  </div>
+  <div id="feedback" class="row"></div>
+  <script type="text/javascript">
+    $(document).foundation();
+  </script>
+</body>
+
