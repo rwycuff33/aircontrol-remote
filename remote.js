@@ -74,7 +74,7 @@ function action() {
         $.get("http://" + address + "/remoteAction=" + number);
       var text = $(this).attr('title');
       $('#feedback')
-        .hide()
+        .fadeIn(150)
         .html('<p>' + text + '</p>')
         .fadeIn(1000, function() {
           $(this)
