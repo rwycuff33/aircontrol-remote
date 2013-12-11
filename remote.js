@@ -1,5 +1,11 @@
 $(document).ready(function () {
   action();
+  $('#server-input').keydown(function(event) {
+    if (event.keyCode == 13) {
+      isIP(this)
+      return false;
+     }
+  });
   $(document).keydown(function (e) {
     switch (e.keyCode) {
       case 37:

@@ -41,9 +41,13 @@ body {
   color: #fff;
   font-family: 'Nixie One', cursive;
   font-size: 2em;
-  height: 50px;
+  height: 65px;
+  line-height: 2em;
   text-align: center;
 }
+  #feedback p {
+    margin: 0;
+  }
 input {
   background: #000;
   border: none;
